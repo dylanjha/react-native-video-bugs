@@ -15,13 +15,16 @@ import Video from 'react-native-video';
 const App: () => React$Node = () => {
   const [showVideo, setShowVideo] = useState(false);
 
-  const onSeek = () => {
-    // this only gets logged at the end of seek events on Android. It does not get logged on iOS
-    console.log('debug onSeek');
+  const onProgress = () => {
+    // iOS - always gets logged
+    // Android - if video starts in 'paused' state, this does not get logged [BUG]
+    console.log('debug onProgress');
   };
 
-  const onProgress = () => {
-    console.log('debug onProgress');
+  const onSeek = () => {
+    // iOS - never gets logged
+    // Android - gets logged [BUG]
+    console.log('debug onSeek');
   };
 
   return (
@@ -50,6 +53,7 @@ const App: () => React$Node = () => {
                 }}
                 onSeek={onSeek}
                 onProgress={onProgress}
+                paused
                 controls
                 muted
               />
