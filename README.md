@@ -8,6 +8,13 @@ You should already have XCode and the iOS simulators installed. You should also 
 
 # Installation
 
+Clone:
+
+```
+git clone git@github.com:dylanjha/react-native-video-bugs.git
+cd react-native-video-bugs
+```
+
 Install dependencies:
 
 ```
